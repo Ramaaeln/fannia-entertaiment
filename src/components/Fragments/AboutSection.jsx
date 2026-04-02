@@ -1,17 +1,21 @@
+import AboutImage from "../../assets/about.png"
+import LogosFannia from "../../assets/Fannia Entertainment.png"
+import Rectagle from "../../assets/rectagle.png"
+import Pengalaman from "../../assets/pengalaman.png"
 export default function AboutSection() {
   return (
     <section className="h-screen flex  ">
       <img
-        src="/src/assets/about.png"
+        src={AboutImage}
         alt=""
         className="w-[586px] h-[631px] object-cover mt-20 ml-15"
       />
-        <div className="absolute my-[32%] mx-[27%]"><img src="/src/assets/pengalaman.png" alt="" /></div>
+        <div className="absolute my-[32%] mx-[27%]"><img src={Pengalaman} alt="" /></div>
       <div className="mt-30 ml-20">
         <div className="flex flex-col gap-5">
           <h1 className="font-base text-xl text-[#FF8B5A]">TENTANG KAMI</h1>
-          <img src="/src/assets/Fannia Entertainment.png" width={400} alt="" />
-          <img src="/src/assets/rectagle.png" width={100} alt="" />
+          <img src={LogosFannia} width={400} alt="" />
+          <img src={Rectagle} width={100} alt="" />
         </div>
         <div className="flex flex-col gap-20">
           <p className="text-lg mt-7 font-base">

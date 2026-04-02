@@ -1,3 +1,5 @@
+import MisiImage from "../../assets/misi.png"
+import Rectagle from "../../assets/rectagle.png"
 export default function MisiSection() {
   const datas = [
     {
@@ -17,7 +19,7 @@ export default function MisiSection() {
         <div className="flex font-headline font-semibold text-6xl  flex-col">
           <span className="text-[#666666]">Komitment Kami</span>
           <span className="text-[#FF5A5A]">untuk Anda</span>
-          <img src="/src/assets/rectagle.png" alt="" className="mt-7 w-10" />
+          <img src={Rectagle} alt="" className="mt-7 w-10" />
           <p className="text-xl font-base font-light text-[#666666] mt-5">
             Kami berkomitmen untuk menghadirkan pengalaman <br /> acara yang tak
             terlupakan bagi setiap klien. Setiap detail <br /> dirancang dengan
@@ -36,7 +38,7 @@ export default function MisiSection() {
             </div>
           ))}
       </div>
-      <img src="/src/assets/misi.png" alt="" className="w-[480px] h-[524px]" />
+      <img src={MisiImage} alt="" className="w-[480px] h-[524px]" />
     </section>
   );
 }

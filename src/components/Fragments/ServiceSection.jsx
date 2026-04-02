@@ -1,35 +1,40 @@
+import ServiceImage1 from "../../assets/service1.png"
+import ServiceImage2 from "../../assets/service2.png"
+import ServiceImage3 from "../../assets/service3.png"
+import ServiceImage4 from "../../assets/service4.png"
+import ServiceImage5 from "../../assets/service5.png"
 export default function ServiceSection() {
   const dataService = [
     {
-      image: "/src/assets/service1.png",
+      image: ServiceImage1,
       title: "Wedding  Organizer",
       detail:
         "Kami merancang pernikahan impian Anda dari awal hingga akhir dengan konsep yang personal dan berkesan.",
       number: "01",
     },
     {
-      image: "/src/assets/service2.png",
+      image: ServiceImage2,
       title: "Event Planning",
       detail:
         "Perencanaan menyeluruh untuk semua jenis acara dari skala kecil hingga event besar dan mewah.",
       number: "02",
     },
     {
-      image: "/src/assets/service3.png",
+      image: ServiceImage3,
       title: "Vendor Management",
       detail:
         "Jaringan vendor terpercaya yang kami kelola untuk memastikan kualitas terbaik di setiap acara.",
       number: "03",
     },
     {
-      image: "/src/assets/service4.png",
+      image: ServiceImage4,
       title: "Creative Concept",
       detail:
         "Tim kreatif kami menghadirkan tema dan dekorasi unik yang mencerminkan kepribadian dan keinginan Anda.",
       number: "04",
     },
     {
-      image: "/src/assets/service5.png",
+      image: ServiceImage5,
       title: "Entertainment Services",
       detail:
         "Hiburan berkualitas tinggi dari performer terbaik untuk memeriahkan setiap acara Anda.",

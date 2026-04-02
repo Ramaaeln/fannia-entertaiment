@@ -1,37 +1,38 @@
+import GalleryImage from "../../assets/gallery.png"
 export default function GallerySection() {
     const dataGallery = [
       {
-        image: "/src/assets/gallery.png",
+        image: GalleryImage,
         title: "Wedding",
         subtitle:
             "The Perfect Union"
     },
       {
-        image: "/src/assets/gallery.png",
+        image: GalleryImage,
         title: "Sweet 17",
         subtitle:
             "Birthday Celebration"
     },
       {
-        image: "/src/assets/gallery.png",
+        image: GalleryImage,
         title: "Corporate ",
         subtitle:
             "Annual Gala Night"
     },
       {
-        image: "/src/assets/gallery.png",
+        image: GalleryImage,
         title: "Music Event",
         subtitle:
             "Concert Spectacular"
     },
       {
-        image: "/src/assets/gallery.png",
+        image: GalleryImage,
         title: "Wedding",
         subtitle:
             "Garden Ceremony"
     },
     {
-        image: "/src/assets/gallery.png",
+        image: GalleryImage,
         title: "Intimate Engagement",
         subtitle:
             "One Step Closer to Forever"
