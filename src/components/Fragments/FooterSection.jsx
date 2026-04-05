@@ -4,6 +4,7 @@ import LocationIcon from "../../assets/location.png";
 import Tiktok from "../../assets/tiktok.png";
 import Instagram from "../../assets/instagram.png";
 import Pesan from "../../assets/pesan.png";
+
 export default function FooterSection() {
   const contactsData = [
     {
@@ -19,45 +20,43 @@ export default function FooterSection() {
       text: "hello@fannia-entertainment.com",
     },
   ];
-  const iconSocial = [
-    {
-      icon: Tiktok,
-    },
-    {
-      icon: Instagram,
-    },
-    {
-      icon: Pesan,
-    },
-  ];
+
+  const iconSocial = [Tiktok, Instagram, Pesan];
+
   return (
-    <footer className="bg-[#0E0E0E]  text-center  p-30">
-      <div className="font-headline  text-left grid grid-cols-4 text-white">
-        {/* Tagline */}
-        <div className="flex flex-col mr-24">
-          <div className="text-xl">
-            <span className="text-4xl text-[#FF8B5A] font-bold">F</span>
+    <footer className="bg-[#0E0E0E] text-white px-5 md:px-20 py-16">
+      
+      {/* GRID */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-left">
+        
+        {/* BRAND */}
+        <div className="flex flex-col gap-4">
+          <div className="text-xl font-headline">
+            <span className="text-3xl md:text-4xl text-[#FF8B5A] font-bold">F</span>
             <span>annia</span> <span>ENTERTAINMENT</span>
           </div>
-          <p>
+
+          <p className="text-sm text-[#D9D9D9] leading-relaxed">
             Wedding & Event Organizer terpercaya yang menghadirkan momen tak
             terlupakan dengan sentuhan kreatif dan profesional.
           </p>
-          <div className="flex mt-12">
+
+          <div className="flex gap-4 mt-4">
             {iconSocial.map((icon, index) => (
               <img
                 key={index}
-                src={icon.icon}
-                alt={`Icon ${index}`}
-                className="w-6 h-6 mt-4 mr-4"
+                src={icon}
+                alt=""
+                className="w-5 h-5 cursor-pointer"
               />
             ))}
           </div>
         </div>
-        {/* Quick Links */}
-        <div className="text-justify font-base">
-          <span className="uppercase">Quick Links</span>
-          <div className="flex flex-col gap-4 mt-8">
+
+        {/* QUICK LINKS */}
+        <div className="font-base">
+          <h4 className="uppercase mb-4">Quick Links</h4>
+          <div className="flex flex-col gap-3 text-sm text-[#D9D9D9]">
             <a href="">About</a>
             <a href="">Event</a>
             <a href="">Package</a>
@@ -67,10 +66,10 @@ export default function FooterSection() {
           </div>
         </div>
 
-        {/* Service */}
-        <div className="text-justify font-base">
-          <span className="uppercase">Layanan</span>
-          <div className="flex flex-col mt-8 gap-4">
+        {/* SERVICES */}
+        <div className="font-base">
+          <h4 className="uppercase mb-4">Layanan</h4>
+          <div className="flex flex-col gap-3 text-sm text-[#D9D9D9]">
             <a href="">Event Planning</a>
             <a href="">Vendor Management</a>
             <a href="">Creative Concept</a>
@@ -79,20 +78,26 @@ export default function FooterSection() {
           </div>
         </div>
 
-        {/* Contact */}
+        {/* CONTACT */}
         <div className="font-base">
-          <span>KONTAK</span>
-          {contactsData.map((contact, index) => (
-            <div key={index} className="flex items-center mt-8 gap-4 ">
-              <img
-                src={contact.icon}
-                alt={`Icon ${index}`}
-                className="w-5 h-5"
-              />
-              <span className="text-[#D9D9D9] text-sm">{contact.text}</span>
-            </div>
-          ))}
+          <h4 className="uppercase mb-4">Kontak</h4>
+          <div className="flex flex-col gap-4">
+            {contactsData.map((contact, index) => (
+              <div key={index} className="flex items-start gap-3">
+                <img src={contact.icon} alt="" className="w-5 h-5 mt-1" />
+                <span className="text-sm text-[#D9D9D9]">
+                  {contact.text}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
+
+      </div>
+
+      {/* COPYRIGHT */}
+      <div className="border-t border-[#2A2A2A] mt-10 pt-6 text-center text-sm text-[#D9D9D9]">
+        © 2026 Fannia Entertainment. All rights reserved.
       </div>
     </footer>
   );

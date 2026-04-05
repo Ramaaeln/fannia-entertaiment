@@ -1,66 +1,82 @@
 import PhoneIcon from "../../assets/phone.png";
 import EmailIcon from "../../assets/email.png";
 import LocationIcon from "../../assets/location.png";
-import Tiktok from '../../assets/tiktok.png';
-import Instagram from '../../assets/instagram.png';
-import Pesan from '../../assets/pesan.png';
+import Tiktok from "../../assets/tiktok.png";
+import Instagram from "../../assets/instagram.png";
+import Pesan from "../../assets/pesan.png";
 
-export default function ContactSection(){
-    const contactsData = [
-        {
-          icon: LocationIcon,
-          text: "Tangerang Selatan, Banten, Indonesia",
-        },
-        {
-          icon: PhoneIcon,
-          text: "+62 812-3456-7890",
-        },
-        {
-          icon: EmailIcon,
-          text: "hello@fannia-entertainment.com",
-        },
-      ];
-      const iconSocial = [
-        {
-            icon: Tiktok,
-        },
-        {
-            icon: Instagram,
-        },
-        {
-            icon: Pesan,
-        },
-      ]
-    return(
-        <footer className="bg-[#1A1A1A]  text-center  p-30">
-      <h4 className="font-base text-[#FF5A5A] text-2xl">HUBUNGI KAMI</h4>
-      <div className="flex text-6xl font-headline flex-col mt-10">
-        <span className="text-[#F7F3F0] ">Wujudkan Acara</span>
+export default function ContactSection() {
+  const contactsData = [
+    {
+      icon: LocationIcon,
+      text: "Tangerang Selatan, Banten, Indonesia",
+    },
+    {
+      icon: PhoneIcon,
+      text: "+62 812-3456-7890",
+    },
+    {
+      icon: EmailIcon,
+      text: "hello@fannia-entertainment.com",
+    },
+  ];
+
+  const iconSocial = [Tiktok, Instagram, Pesan];
+
+  return (
+    <footer className="bg-[#1A1A1A] text-center px-5 md:px-20 py-16">
+      
+      {/* TITLE */}
+      <h4 className="font-base text-[#FF5A5A] text-lg md:text-2xl">
+        HUBUNGI KAMI
+      </h4>
+
+      {/* HEADING */}
+      <div className="flex flex-col mt-6 md:mt-10 text-3xl md:text-6xl font-headline leading-tight">
+        <span className="text-[#F7F3F0]">Wujudkan Acara</span>
         <span className="text-[#FF5A5A]">Impian Anda</span>
       </div>
-      <p className="font-base text-[#D9D9D9] text-sm mt-2">
+
+      {/* DESC */}
+      <p className="font-base text-[#D9D9D9] text-sm md:text-base mt-4 max-w-xl mx-auto">
         Hubungi kami sekarang dan dapatkan konsultasi gratis untuk acara spesial
         Anda
       </p>
-      <div className="mt-12 text-white flex gap-12 items-center font-base justify-center">
+
+      {/* BUTTON */}
+      <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-8 items-center justify-center">
         <a
           href=""
-          className="bg-linear-to-r from-[#FF5A5A] to-[#FF8B5A]  p-4 rounded-full "
+          className="bg-gradient-to-r from-[#FF5A5A] to-[#FF8B5A] px-6 py-3 rounded-full text-white text-sm md:text-base"
         >
           Whatsapp Kami
         </a>
-        <a href="" className="border rounded-full p-4  border-white">
+        <a
+          href=""
+          className="border border-white px-6 py-3 rounded-full text-white text-sm md:text-base"
+        >
           Kirim Email
         </a>
       </div>
-      <div className="flex items-center font-base justify-center gap-10">
+
+      {/* CONTACT INFO */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-10 text-white">
         {contactsData.map((contact, index) => (
-          <div key={index} className="flex items-center gap-2  mt-10">
-            <img src={contact.icon} alt={`Icon ${index}`} className="w-5 h-5" />
-            <span className="text-[#D9D9D9] text-sm">{contact.text}</span>
+          <div key={index} className="flex items-center justify-center gap-2">
+            <img src={contact.icon} alt="" className="w-5 h-5" />
+            <span className="text-[#D9D9D9] text-sm">
+              {contact.text}
+            </span>
           </div>
         ))}
       </div>
+
+      {/* SOCIAL ICON */}
+      <div className="flex justify-center gap-5 mt-8">
+        {iconSocial.map((icon, index) => (
+          <img key={index} src={icon} alt="" className="w-6 h-6 cursor-pointer" />
+        ))}
+      </div>
     </footer>
-    )
+  );
 }
