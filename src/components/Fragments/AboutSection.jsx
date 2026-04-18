@@ -5,7 +5,7 @@ import Pengalaman from "../../assets/pengalaman.png";
 
 export default function AboutSection() {
   return (
-    <section className="flex flex-col md:flex-row items-center gap-10 px-5 md:px-20 py-16">
+    <section id="about" className="flex flex-col md:flex-row items-center gap-10 px-5 md:px-20 pt-26 py-16">
       
       <div className="relative">
         <img

@@ -9,10 +9,10 @@ export default function MisiSection() {
   ];
 
   return (
-    <section className="flex flex-col md:flex-row items-center gap-10 bg-[#F7F3F0] px-5 md:px-20 py-16">
+    <section className="flex flex-col justify-center  md:flex-row items-center gap-10 bg-[#F7F3F0] px-5 md:px-20 py-16">
       
       {/* TEXT */}
-      <div className="flex flex-col gap-6 max-w-xl text-center md:text-left">
+      <div className="flex flex-col  gap-6 max-w-xl text-center md:text-left">
         
         <span className="font-base text-[#FF8B5A] text-sm md:text-lg">
           MISI KAMI
@@ -50,7 +50,7 @@ export default function MisiSection() {
       </div>
 
       {/* IMAGE */}
-      <div>
+      <div >
         <img
           src={MisiImage}
           alt=""

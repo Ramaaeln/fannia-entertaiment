@@ -13,11 +13,12 @@ export default function Navigations() {
       </a>
 
       <div className="hidden md:flex gap-5 font-primary">
-        <a href="">About</a>
+        <a href="#about">About</a>
+        <a href="#service">Service</a>
         <a href="">Event</a>
         <a href="">Packages</a>
         <a href="">Gallery</a>
-        <a href="">Testimoni</a>
+        <a href="#testimony">Testimoni</a>
         <a href="">Contact</a>
       </div>
 
