@@ -1,41 +1,48 @@
 import GalleryImage from "../../assets/gallery.png";
+import Image1 from "../../assets/Gallery 1.png"
+import Image2 from "../../assets/Gallery 2.png"
+import Image3 from "../../assets/Gallery 3.png"
+import Image4 from "../../assets/Gallery 4.png"
 
 export default function GallerySection() {
-  const dataGallery = [
-    {
-      image: GalleryImage,
-      title: "Wedding",
-      subtitle: "The Perfect Union",
-    },
-    {
-      image: GalleryImage,
-      title: "Sweet 17",
-      subtitle: "Birthday Celebration",
-    },
-    {
-      image: GalleryImage,
-      title: "Corporate",
-      subtitle: "Annual Gala Night",
-    },
-    {
-      image: GalleryImage,
-      title: "Music Event",
-      subtitle: "Concert Spectacular",
-    },
-    {
-      image: GalleryImage,
-      title: "Wedding",
-      subtitle: "Garden Ceremony",
-    },
-    {
-      image: GalleryImage,
-      title: "Intimate Engagement",
-      subtitle: "One Step Closer to Forever",
-    },
-  ];
+  const dataGallery = {
+    datas1: [
+      {
+        images: Image1,
+      },
+      {
+        images: Image3,
+      }
+    ],
+    datas2:[
+      {
+        images: Image2,
+      },
+      {
+        images: Image4,
+      },
+    ],
+    datas3: [
+      {
+        images: Image1,
+      },
+      {
+        images: Image3,
+      }
+    ],
+    datas4:[
+      {
+        images: Image2,
+      },
+      {
+        images: Image4,
+      },
+    ],
+
+  };
 
   return (
-    <section className="px-5 md:px-20 py-16">
+    <section className="px-5 md:px-20 py-16 h-full">
       
       {/* HEADER */}
       <div className="text-center mb-10">
@@ -53,39 +60,50 @@ export default function GallerySection() {
       </div>
 
       {/* GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {dataGallery.map((item, index) => (
-          <div
-            key={index}
-            className="relative rounded-xl overflow-hidden group"
-          >
-            {/* IMAGE */}
-            <img
-              src={item.image}
-              alt=""
-              className="w-full h-[220px] md:h-[260px] object-cover group-hover:scale-110 transition duration-300"
-            />
+      <div className="grid grid-cols-2 mx-[280px] md:grid-cols-4 gap-4">
+    <div className="grid gap-4 h-fit w-fit" >
+        {dataGallery.datas1.map((datas, index)=>{
+          return(
+        <div key={index} className="hover:scale-103 transition-all duration-300 delay-150 ease-in-out opacity-80 hover:opacity-100 hover:shadow-lg">
+            <img className="h-auto max-w-full rounded" src={datas.images} alt=""/>
+        </div>
+      );})}
+    </div>
 
-            {/* OVERLAY */}
-            <div className="absolute inset-0 bg-black/50 flex flex-col justify-end p-4">
-              <span className="text-[#FF8B5A] text-sm uppercase">
-                {item.title}
-              </span>
-              <span className="text-white font-headline text-lg md:text-xl">
-                {item.subtitle}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="grid gap-4 mt-20 h-fit w-fit">
+      {dataGallery.datas2.map((datas2,index2)=>{return(
+        <div key={index2} className="hover:scale-103  transition-all duration-300 delay-150 ease-in-out opacity-80  hover:opacity-100 hover:shadow-lg">
+            <img className="h-auto max-w-full rounded " src={datas2.images} alt=""/>
+        </div>
+        )})}
+    </div>
+
+    <div className="grid gap-4 h-fit w-fit ">
+    {dataGallery.datas3.map((datas3,index3)=>{return(
+        <div key={index3} className="hover:scale-103  transition-all duration-300 delay-150 ease-in-out opacity-80 hover:opacity-100 hover:shadow-lg">
+            <img className="h-auto max-w-full rounded-base" src={datas3.images} alt=""/>
+        </div>
+        )})}
+    </div>
+    <div className="grid gap-4 mt-20 h-fit w-fit">
+    {dataGallery.datas4.map((datas4,index4)=>{return(
+        <div key={index4} className="hover:scale-103 transition-all duration-300 delay-150 ease-in-out opacity-80 hover:opacity-100 hover:shadow-lg">
+            <img className="h-auto max-w-full rounded-base" src={datas4.images} alt=""/>
+        </div>
+        )})}
+        
+    </div>
+</div>
 
       {/* BUTTON */}
-      <div className="w-full text-center mt-10">
+      <div className="w-full text-center pt-20">
         <a
           href=""
-          className="bg-gradient-to-r from-[#FF8B5A] to-[#FF5A5A] px-6 py-3 rounded-full text-white text-sm md:text-base"
+          className="
+          hover:scale-110 transition-all duration-300 delay-150 ease-in-out  hover:shadow-lg
+          bg-gradient-to-r from-[#FF8B5A] to-[#FF5A5A] px-6 py-3 rounded-full text-white text-sm md:text-base"
         >
-          Lihat Semua Portofolio
+          Lihat Semua Gallery
         </a>
       </div>
     </section>
