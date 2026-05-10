@@ -1,6 +1,6 @@
 export default function HeroSection() {
   return (
-    <section className="relative w-full min-h-screen flex items-center">
+    <section id="home" className="relative w-full min-h-screen -mt-20 flex items-center">
       
       <div className="absolute inset-0">
         <div className="bg-[url('./assets/hero.jpg')] w-full h-full bg-cover bg-center"></div>

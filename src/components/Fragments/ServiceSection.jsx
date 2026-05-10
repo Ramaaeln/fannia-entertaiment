@@ -70,7 +70,7 @@ export default function ServiceSection() {
             01
           </span>
 
-          <h3 className="absolute left-4 bottom-6 sm:bottom-8 md:bottom-7 group-hover:bottom-20 md:group-hover:bottom-24 text-lg sm:text-2xl md:text-4xl lg:text-6xl font-headline text-[#FF8B5A] group-hover:text-[#FF5A5A] transition-all duration-500 z-20">
+          <h3 className="absolute  left-4 bottom-6 sm:bottom-8 md:bottom-7 group-hover:bottom-20 md:group-hover:bottom-24 text-lg sm:text-2xl md:text-4xl lg:text-6xl font-headline text-[#FF8B5A] group-hover:text-white transition-all duration-500 z-20">
             Wedding Organizer
           </h3>
 
@@ -86,8 +86,8 @@ export default function ServiceSection() {
             key={index}
             className="relative hover:transform-gpu hover:-skew-1 hover:translate-1 hover:scale-105 group-hover:opacity-0 transition delay-150 duration-300 ease-in-out  bg-[#F7F3F0] p-6 rounded-xl shadow-md overflow-hidden group"
           >
-            <div className="absolute -z-1  bg-[url('./assets/ServicesBg.png')] opacity-0 group-hover:opacity-70 w-[500px] h-[500px]  top-0 right-0">s</div>
-            <span className="absolute  top-4 right-4 text-5xl md:text-7xl font-headline text-[#FF5A5A] group-hover:text-[#F7F3F0] opacity-40">
+            <div className="absolute -z-1  bg-[url('./assets/ServicesBg.png')] opacity-0 group-hover:opacity-50 w-[500px] h-[500px]  top-0 right-0">s</div>
+            <span className="absolute  top-4 right-4 text-5xl md:text-7xl font-headline text-[#FF5A5A] group-hover:text-[#F7F3F0] group-hover:text-shadow-lg opacity-90">
               {item.number}
             </span>
 
@@ -96,14 +96,16 @@ export default function ServiceSection() {
               alt=""
               className="group-hover:sepia w-10 mb-4"
             />
+          <div className="group-hover:bg-white/30 p-2 group-hover:rounded-lg">
 
-            <h3 className="font-headline text-xl z-4 md:text-2xl text-[#FF8B5A] group-hover:text-shadow-lg group-hover:font-bold group-hover:text-[#FF5A5A] mb-2">
+            <h3 className="font-headline text-xl z-4 md:text-2xl text-[#FF8B5A] group-hover:text-shadow-lg group-hover:font-extrabold group-hover:text-[#FF5A5A] mb-2">
               {item.title}
             </h3>
 
-            <p className="group-hover:text-shadow-lg text-[#00000080] group-hover:text-white text-sm  md:text-base leading-relaxed">
+            <p className="group-hover:text-shadow-lg text-[#00000080]  group-hover:text-black text-sm  md:text-base leading-relaxed">
               {item.detail}
             </p>
+          </div>
           </div>
         ))}
       </div>
