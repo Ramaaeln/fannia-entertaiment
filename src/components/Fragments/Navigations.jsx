@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Outlet } from "react-router";
 import { Link } from "react-router-dom";
+import Logos from "../../assets/Asset Fannia Entertainment/logos.png"
 
 export default function Navigations() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,7 @@ export default function Navigations() {
     <div>
       <nav className="flex justify-between h-20 items-center px-7 shadow sticky top-0 bg-white z-50">
         <Link to="/#home"  className="flex text-xl font-headline font-bold items-end">
-          <img src="/src/assets/Asset Fannia Entertainment/logos.png" alt="" />
+          <img src={Logos} alt="Logo" />
         </Link>
 
         <div className="hidden md:flex gap-5 font-primary">

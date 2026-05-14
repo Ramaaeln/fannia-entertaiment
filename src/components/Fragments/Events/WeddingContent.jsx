@@ -3,6 +3,13 @@ import FooterSection from "../FooterSection";
 import MitraVendorContent from "./MitraVendorContents";
 import ServicesWOContents from "./ServicesWOContents";
 import WorkProcess from "./WorkProcessContent";
+import HeroImage from "../../../assets/EventImageWO.png";
+import Images1 from "../../../assets/WOImages2.png";
+import Images2 from "../../../assets/WOImages3.png";
+import Images3 from "../../../assets/WOImages4.png";
+import Images4 from "../../../assets/WOImages5.png";
+import Images5 from "../../../assets/WOImages6.png";
+
 
 export default function WeddingContent() {
   const weddingContent = [
@@ -10,33 +17,33 @@ export default function WeddingContent() {
       title: "Rias Busana",
       description: "Make-up artist profesional untuk pengantin dan keluarga.",
       features: ["MUA", "Gaun pengantin", "Stylist", "Aksesoris"],
-      images: ["/src/assets/WOImages2.png"],
+      images: Images1,
     },
     {
       title: "Dekorasi & Tenda",
       description:
         "Transformasi ruang pesta dengan tema impian, dari estetik hingga megah.",
       features: ["Garden", "Modern", "Classic", "Bohemian"],
-      images: ["/src/assets/WOImages3.png"],
+      images: Images2,
     },
     {
       title: "Dokumentasi",
       description:
         "Tim Foto & Videografer untuk mengabadikan momen once-in-a-lifetime.",
       features: ["Foto", "Videografi"],
-      images: ["/src/assets/WOImages4.png"],
+      images: Images3,
     },
     {
       title: "Entertainment",
       description: "Live music, sound system, dan pengisi acara.",
       features: ["Live music", "Sound system", "Pengisi acara"],
-      images: ["/src/assets/WOImages5.png"],
+      images: Images4,
     },
     {
       title: "Master of Ceremony",
       description: "MC berpengalaman yang menghidupkan suasana acara.",
       features: ["MC"],
-      images: ["/src/assets/WOImages6.png"],
+      images: Images5,
     },
   ];
 
@@ -57,7 +64,7 @@ export default function WeddingContent() {
         <div className="relative rounded-3xl overflow-hidden">
 
           <img
-            src="/src/assets/EventImageWO.png"
+            src={HeroImage}
             alt="Wedding Organizer"
             className="w-full h-[350px] md:h-[600px] object-cover"
           />
@@ -116,7 +123,7 @@ export default function WeddingContent() {
               className="relative overflow-hidden rounded-2xl group"
             >
               <img
-                src={item.images[0]}
+                src={item.images}
                 alt={item.title}
                 className="w-full h-[420px] object-cover group-hover:scale-105 transition duration-500"
               />

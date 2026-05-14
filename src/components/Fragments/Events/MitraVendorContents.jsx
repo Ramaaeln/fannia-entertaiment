@@ -1,24 +1,25 @@
+import Mitra1 from "../../../assets/icons/gsk.png";
 export default function MitraVendorContent() {
   const mitra = [
     {
       name: "Gao Shan Kitchen",
-      logo: "/src/assets/icons/gsk.png",
+      logo: Mitra1,
     },
     {
       name: "Gao Shan Kitchen",
-      logo: "/src/assets/icons/gsk.png",
+      logo: Mitra1,
     },
     {
       name: "Gao Shan Kitchen",
-      logo: "/src/assets/icons/gsk.png",
+      logo: Mitra1,
     },
     {
       name: "Gao Shan Kitchen",
-      logo: "/src/assets/icons/gsk.png",
+      logo: Mitra1,
     },
     {
       name: "Gao Shan Kitchen",
-      logo: "/src/assets/icons/gsk.png",
+      logo: Mitra1,
     },
   ];
 

@@ -1,40 +1,49 @@
+import Icons1 from "../../../assets/icons/mc.png";
+import Icons2 from "../../../assets/icons/makeup.png";
+import Icons3 from "../../../assets/icons/lighting.png";
+import Icons4 from "../../../assets/icons/weddingdress.png";
+import Icons5 from "../../../assets/icons/documentation.png";
+import Icons6 from "../../../assets/icons/decoration.png";
+import Icons7 from "../../../assets/icons/entertainment.png";
+import Icons8 from "../../../assets/icons/team.png";
+import Icons9 from "../../../assets/icons/bridalsuit.png";
 export default function ServicesWOContents() {
   const ServicesWO = [
     {
       name: "MC",
-      image: "/src/assets/icons/mc.png",
+      image: Icons1,
     },
     {
       name: "Makeup",
-      image: "/src/assets/icons/makeup.png",
+      image: Icons2,
     },
     {
       name: "Lighting",
-      image: "/src/assets/icons/lighting.png",
+      image: Icons3,
     },
     {
       name: "Wedding Dress",
-      image: "/src/assets/icons/weddingdress.png",
+      image: Icons4,
     },
     {
       name: "Documentation",
-      image: "/src/assets/icons/documentation.png",
+      image: Icons5,
     },
     {
       name: "Decoration",
-      image: "/src/assets/icons/decoration.png",
+      image: Icons6,
     },
     {
       name: "Entertainment",
-      image: "/src/assets/icons/entertainment.png",
+      image: Icons7,
     },
     {
       name: "Team Wedding",
-      image: "/src/assets/icons/team.png",
+      image: Icons8,
     },
     {
       name: "Bridal Suit",
-      image: "/src/assets/icons/bridalsuit.png",
+      image: Icons9,
     },
   ];
 
