@@ -24,7 +24,7 @@ export default function ContactSection() {
   const iconSocial = [Tiktok, Instagram, Pesan];
 
   return (
-    <footer className="bg-[#1A1A1A] text-center px-5 md:px-20 py-16">
+    <footer id="contact" className="bg-[#1A1A1A] text-center px-5 md:px-20 py-16">
       
       {/* TITLE */}
       <h4 className="font-base text-[#FF5A5A] text-lg md:text-2xl">

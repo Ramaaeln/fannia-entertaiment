@@ -1,139 +1,278 @@
 import { useState, useEffect } from "react";
+
 import ProfileTestimony from "../../assets/profileTestimony.png";
-import ArrowLeft from "../../assets/icons/arrow-left-s-line.svg";
-import ArrowRight from "../../assets/icons/arrow-right-s-line.svg";
+
+import {
+  ArrowLeft,
+  ArrowRight,
+  Quote,
+  Sparkles,
+  Star,
+} from "lucide-react";
+
 export default function TestimonySection() {
   const dataTestimony = [
     {
       image: ProfileTestimony,
       title: "Hilmy & Sasa",
-      subtitle: "Wedding - September 2023",
+      subtitle: "Wedding • September 2023",
       deskripsi:
-        "Fannia Entertainment benar-benar membuat hari pernikahan kami menjadi luar biasa. Setiap detail dipersiapkan dengan sempurna. Sangat direkomendasikan!",
+        "Fannia Entertainment benar-benar membuat hari pernikahan kami menjadi luar biasa. Setiap detail dipersiapkan dengan sangat sempurna dan profesional.",
     },
+
     {
       image: ProfileTestimony,
       title: "Rizky & Aulia",
-      subtitle: "Wedding - Januari 2024",
+      subtitle: "Wedding • Januari 2024",
       deskripsi:
-        "Pelayanan sangat profesional dan tim sangat membantu. Acara berjalan lancar tanpa kendala.",
+        "Pelayanan sangat profesional dan tim sangat membantu dari awal hingga akhir acara. Semua berjalan lancar tanpa kendala.",
     },
+
     {
       image: ProfileTestimony,
       title: "Andi Corp",
       subtitle: "Corporate Event",
       deskripsi:
-        "Event kami jadi sangat berkesan berkat konsep kreatif dari Fannia Entertainment.",
+        "Konsep acara yang kreatif dan elegan membuat event perusahaan kami terasa lebih premium dan berkesan.",
     },
   ];
 
   const [current, setCurrent] = useState(0);
 
   const prevSlide = () => {
-    setCurrent(current === 0 ? dataTestimony.length - 1 : current - 1);
+    setCurrent(
+      current === 0
+        ? dataTestimony.length - 1
+        : current - 1
+    );
   };
 
   const nextSlide = () => {
-    setCurrent(current === dataTestimony.length - 1 ? 0 : current + 1);
+    setCurrent(
+      current === dataTestimony.length - 1
+        ? 0
+        : current + 1
+    );
   };
 
-  // AUTO SLIDE
+  // Auto Slide
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 4000);
+    }, 5000);
+
     return () => clearInterval(interval);
   }, [current]);
 
   return (
     <section
       id="testimony"
-      className="bg-gradient-to-b from-[#F7F3F0] to-white px-4 sm:px-6 md:px-12 lg:px-20 py-16 md:py-20"
+      className="relative overflow-hidden
+      bg-gradient-to-b
+      from-[#FAF7F4] to-white
+      py-24 px-5 md:px-10"
     >
-      {/* HEADER */}
-      <div className="text-center mb-10">
-        <span className="font-base text-[#FF8B5A] uppercase text-sm">
-          Kata Mereka
-        </span>
+      {/* Blur Accent */}
+      <div
+        className="absolute top-0 left-0
+        w-[350px] h-[350px]
+        bg-[#FFB38A]/20 blur-[150px] rounded-full"
+      />
 
-        <h2 className="font-headline text-3xl md:text-5xl mt-2">
-          Testimoni <span className="text-[#FF8B5A]">Klien</span>
-        </h2>
-      </div>
+      <div
+        className="absolute bottom-0 right-0
+        w-[350px] h-[350px]
+        bg-[#FFD45A]/10 blur-[150px] rounded-full"
+      />
 
-      {/* SLIDER */}
-      <div className="relative max-w-3xl mx-auto">
-        {/* CARD */}
-        <div className="bg-white/80 backdrop-blur-md border border-white/40 shadow-xl rounded-xl p-6 md:p-10 text-center relative min-h-[260px] md:min-h-[280px] transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
-
-          {/* QUOTE ICON */}
-          <div className="absolute top-4 left-6 text-6xl text-[#FF8B5A]/20 font-serif">
-            “
-          </div>
-
-          {/* TEXT */}
-          <p className="text-[#666666] text-sm md:text-lg mb-10 md:mb-12 transition-all duration-500 ease-in-out">
-            {dataTestimony[current].deskripsi}
-          </p>
-
-          {/* PROFILE */}
-          <div className="absolute bottom-4 left-4 md:left-6 flex items-center gap-3">
-            <div className="p-[2px] rounded-full bg-gradient-to-r from-[#FF8B5A] to-[#FF5A5A]">
-              <img
-                src={dataTestimony[current].image}
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover"
-                alt=""
-              />
-            </div>
-
-            <div className="text-left">
-              {/* RATING */}
-              <div className="text-[#FF8B5A] text-xs">★★★★★</div>
-
-              <h4 className="font-headline text-black text-xs md:text-lg">
-                {dataTestimony[current].title}
-              </h4>
-
-              <span className="text-[10px] md:text-xs text-gray-500">
-                {dataTestimony[current].subtitle}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* NAVIGATION */}
-      <div className="flex items-center justify-center gap-4 mt-6">
+      <div className="relative z-10 max-w-6xl mx-auto">
         
-        {/* PREV */}
-        <button
-          onClick={prevSlide}
-          className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center border border-black/20 bg-white shadow rounded-full hover:scale-110 transition"
-        >
-          <img src={ArrowLeft} alt="Previous" className="opacity-40"/>
-        </button>
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto">
+          
+          {/* Badge */}
+          <div
+            className="inline-flex items-center gap-2
+            bg-white border border-[#EFE7E1]
+            rounded-full px-5 py-2 shadow-sm"
+          >
+            <Sparkles size={14} className="text-[#E58B63]" />
 
-        <div className="flex gap-2">
-          {dataTestimony.map((_, index) => (
-            <div
-              key={index}
-              onClick={() => setCurrent(index)}
-              className={`h-2.5 md:h-3 rounded-full cursor-pointer transition-all duration-300 ${
-                index === current
-                  ? "w-6 bg-[#FF5A5A]"
-                  : "w-2.5 bg-gray-300"
-              }`}
-            ></div>
-          ))}
+            <span className="text-sm tracking-wide text-[#C9845E]">
+              Client Experience
+            </span>
+          </div>
+
+          {/* Title */}
+          <h2
+            className="mt-6 text-4xl md:text-6xl
+            font-headline font-medium
+            text-[#1B1B1B]"
+          >
+            Testimoni
+            <span
+              className="ml-3 bg-gradient-to-r
+              from-[#FFB36B] via-[#FF8B5A] to-[#FF6A5B]
+              bg-clip-text text-transparent italic"
+            >
+              Klien
+            </span>
+          </h2>
+
+          {/* Desc */}
+          <p
+            className="mt-6 text-sm md:text-lg
+            text-gray-500 leading-relaxed"
+          >
+            Kepuasan klien adalah prioritas utama kami dalam
+            menciptakan acara yang elegan dan berkesan.
+          </p>
         </div>
 
-        {/* NEXT */}
-        <button
-          onClick={nextSlide}
-          className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center border border-black/20 bg-white shadow rounded-full hover:scale-110 transition"
-        >
-          <img src={ArrowRight} alt="Next" className="opacity-40"/>
-        </button>
+        {/* Testimonial Card */}
+        <div className="mt-20 relative">
+          
+          <div
+            className="relative overflow-hidden
+            bg-white/85 backdrop-blur-2xl
+            border border-[#F2ECE7]
+            rounded-[40px]
+            p-8 md:p-14
+            min-h-[420px]
+            shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
+          >
+            {/* Glow */}
+            <div
+              className="absolute top-0 right-0
+              w-[250px] h-[250px]
+              bg-[#FFB38A]/10 blur-[120px]"
+            />
+
+            {/* Quote */}
+            <div
+              className="absolute top-8 right-8
+              text-[#FFE0D0]"
+            >
+              <Quote size={80} strokeWidth={1.5} />
+            </div>
+
+            {/* Rating */}
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, index) => (
+                <Star
+                  key={index}
+                  size={18}
+                  className="fill-[#FFB36B] text-[#FFB36B]"
+                />
+              ))}
+            </div>
+
+            {/* Text */}
+            <p
+              className="mt-8
+              text-xl md:text-3xl
+              leading-relaxed
+              text-[#2B2B2B]
+              font-light max-w-4xl"
+            >
+              “{dataTestimony[current].deskripsi}”
+            </p>
+
+            {/* Bottom */}
+            <div
+              className="mt-14 flex flex-col md:flex-row
+              items-start md:items-center
+              justify-between gap-8"
+            >
+              {/* Profile */}
+              <div className="flex items-center gap-5">
+                
+                {/* Image */}
+                <div
+                  className="p-[3px] rounded-full
+                  bg-gradient-to-r
+                  from-[#FFB36B] to-[#FF8B5A]"
+                >
+                  <img
+                    src={dataTestimony[current].image}
+                    alt={dataTestimony[current].title}
+                    className="w-16 h-16 rounded-full object-cover"
+                  />
+                </div>
+
+                {/* Info */}
+                <div>
+                  <h4
+                    className="text-xl font-semibold
+                    text-[#1B1B1B]"
+                  >
+                    {dataTestimony[current].title}
+                  </h4>
+
+                  <p
+                    className="mt-1 text-sm
+                    text-gray-500 tracking-wide"
+                  >
+                    {dataTestimony[current].subtitle}
+                  </p>
+                </div>
+              </div>
+
+              {/* Navigation */}
+              <div className="flex items-center gap-4">
+                
+                {/* Prev */}
+                <button
+                  onClick={prevSlide}
+                  className="w-12 h-12 rounded-full
+                  bg-[#FAF7F4]
+                  border border-[#EFE7E1]
+                  flex items-center justify-center
+                  text-[#D08962]
+                  hover:bg-gradient-to-r
+                  hover:from-[#FF8A5B]
+                  hover:to-[#FFB36B]
+                  hover:text-white
+                  transition-all duration-300"
+                >
+                  <ArrowLeft size={20} />
+                </button>
+
+                {/* Dots */}
+                <div className="flex items-center gap-2">
+                  {dataTestimony.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrent(index)}
+                      className={`transition-all duration-300 rounded-full ${
+                        current === index
+                          ? "w-8 h-3 bg-gradient-to-r from-[#FF8A5B] to-[#FFB36B]"
+                          : "w-3 h-3 bg-[#E6DED8]"
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                {/* Next */}
+                <button
+                  onClick={nextSlide}
+                  className="w-12 h-12 rounded-full
+                  bg-[#FAF7F4]
+                  border border-[#EFE7E1]
+                  flex items-center justify-center
+                  text-[#D08962]
+                  hover:bg-gradient-to-r
+                  hover:from-[#FF8A5B]
+                  hover:to-[#FFB36B]
+                  hover:text-white
+                  transition-all duration-300"
+                >
+                  <ArrowRight size={20} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

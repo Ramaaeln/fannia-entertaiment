@@ -1,114 +1,299 @@
-import ServiceImage1 from "../../assets/service1.png";
+import ServiceImage1 from "../../assets/ServicesBg.png";
 import ServiceImage2 from "../../assets/service2.png";
 import ServiceImage3 from "../../assets/service3.png";
 import ServiceImage4 from "../../assets/service4.png";
 import ServiceImage5 from "../../assets/service5.png";
-import Background from "../../assets/ServicesBg.png";
+
+import {
+  ArrowUpRight,
+  Sparkles,
+} from "lucide-react";
 
 export default function ServiceSection() {
   const dataService = [
-    // {
-    //   image: ServiceImage1,
-    //   title: "Wedding Organizer",
-    //   detail:
-    //     "Kami merancang pernikahan impian Anda dari awal hingga akhir dengan konsep yang personal dan berkesan.",
-    //   number: "01",
-    // },
+    {
+      image: ServiceImage1,
+      title: "Wedding Organizer",
+      detail:
+        "Kami merancang pernikahan impian Anda dari awal hingga akhir dengan konsep personal dan elegan.",
+      number: "01",
+    },
     {
       image: ServiceImage2,
       title: "Event Planning",
       detail:
-        "Perencanaan menyeluruh untuk semua jenis acara dari skala kecil hingga event besar dan mewah.",
+        "Perencanaan acara profesional dari intimate event hingga luxury celebration.",
       number: "02",
     },
     {
       image: ServiceImage3,
       title: "Vendor Management",
       detail:
-        "Jaringan vendor terpercaya yang kami kelola untuk memastikan kualitas terbaik di setiap acara.",
+        "Vendor terpercaya dengan kualitas terbaik untuk memastikan acara berjalan sempurna.",
       number: "03",
     },
     {
       image: ServiceImage4,
       title: "Creative Concept",
       detail:
-        "Tim kreatif kami menghadirkan tema dan dekorasi unik yang mencerminkan kepribadian Anda.",
+        "Konsep kreatif modern dan dekorasi eksklusif yang mencerminkan karakter Anda.",
       number: "04",
     },
     {
       image: ServiceImage5,
-      title: "Entertainment Services",
+      title: "Entertainment",
       detail:
-        "Hiburan berkualitas tinggi dari performer terbaik untuk memeriahkan setiap acara.",
+        "Entertainment premium untuk menciptakan pengalaman acara yang lebih hidup.",
       number: "05",
     },
   ];
 
   return (
-    <section id="service" className="px-5  md:px-20 pt-26">
-      <div className="text-center mb-10">
-        <span className="font-base text-[#FF8B5A] uppercase text-sm md:text-base">
-          Apa yang Kami Tawarkan
-        </span>
+    <section
+      id="service"
+      className="relative overflow-hidden
+      bg-[#FAF7F4]
+      py-24 px-5 md:px-10"
+    >
+      {/* Blur Accent */}
+      <div
+        className="absolute top-0 left-0
+        w-[350px] h-[350px]
+        bg-[#FFB38A]/20 blur-[150px] rounded-full"
+      />
 
-        <h2 className="font-headline text-3xl md:text-5xl mt-2">
-          Layanan <span className="text-[#FF8B5A]">Kami</span>
-        </h2>
+      <div
+        className="absolute bottom-0 right-0
+        w-[350px] h-[350px]
+        bg-[#FFD45A]/10 blur-[150px] rounded-full"
+      />
 
-        <p className="text-[#666666] text-sm md:text-base mt-2 max-w-xl mx-auto">
-          Kami menyediakan solusi lengkap untuk setiap jenis acara Anda
-        </p>
-      </div>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto">
+          
+          {/* Badge */}
+          <div
+            className="inline-flex items-center gap-2
+            bg-white border border-[#EFE7E1]
+            rounded-full px-5 py-2 shadow-sm"
+          >
+            <Sparkles size={14} className="text-[#E58B63]" />
 
-      <div className="grid grid-cols-1 gap-6 font-headline">
-        <div className="w-full max-w-[1150px] mx-auto hover:scale-[1.02] transition duration-300 ease-in-out relative rounded-xl shadow-md overflow-hidden group">
-          <div className="group-hover:bg-[#FF8B5A]/40 transition duration-300 ease-in-out absolute inset-0 rounded-xl z-10"></div>
+            <span className="text-sm tracking-wide text-[#C9845E]">
+              Premium Wedding & Event Service
+            </span>
+          </div>
 
-          <img src={Background} className="w-full" alt="" />
+          {/* Title */}
+          <h2
+            className="mt-6 text-4xl md:text-6xl
+            font-headline font-medium
+            text-[#1B1B1B]"
+          >
+            Layanan
+            <span
+              className="ml-3 bg-gradient-to-r
+              from-[#FFB36B] via-[#FF8B5A] to-[#FF6A5B]
+              bg-clip-text text-transparent italic"
+            >
+              Kami
+            </span>
+          </h2>
 
-          <span className="absolute bottom-2 right-4 text-4xl sm:text-6xl md:text-8xl lg:text-9xl group-hover:text-white z-20 opacity-70 font-headline text-[#FF5A5A]">
-            01
-          </span>
-
-          <h3 className="absolute  left-4 bottom-6 sm:bottom-8 md:bottom-7 group-hover:bottom-20 md:group-hover:bottom-24 text-lg sm:text-2xl md:text-4xl lg:text-6xl font-headline text-[#FF8B5A] group-hover:text-white transition-all duration-500 z-20">
-            Wedding Organizer
-          </h3>
-
-          <p className="absolute opacity-0 group-hover:opacity-100 bottom-6 sm:bottom-8 md:bottom-7 left-4 text-xs sm:text-sm md:text-base lg:text-xl text-white transition duration-300 z-20 leading-relaxed">
-            Kami merancang pernikahan impian Anda dari awal hingga akhir <br />
-            dengan konsep yang personal dan berkesan
+          {/* Desc */}
+          <p
+            className="mt-6 text-sm md:text-lg
+            text-gray-500 leading-relaxed"
+          >
+            Kami menyediakan solusi lengkap untuk menghadirkan acara
+            yang elegan, berkesan, dan profesional.
           </p>
         </div>
-      </div>
-      <div className="grid grid-cols-1 lg:mx-75 sm:grid-cols-2 lg:grid-cols-3 mt-4 gap-6">
-        {dataService.map((item, index) => (
+
+        {/* Main Featured Card */}
+        <div
+          className="mt-20 relative overflow-hidden
+          rounded-[40px]
+          min-h-[520px]
+          group"
+        >
+          {/* Background */}
+          <img
+            src={ServiceImage1}
+            alt="Wedding Organizer"
+            className="absolute inset-0 w-full h-full object-cover
+            group-hover:scale-105 transition-all duration-700"
+          />
+
+          {/* Overlay */}
           <div
-            key={index}
-            className="relative hover:transform-gpu hover:-skew-1 hover:translate-1 hover:scale-105 group-hover:opacity-0 transition delay-150 duration-300 ease-in-out  bg-[#F7F3F0] p-6 rounded-xl shadow-md overflow-hidden group"
+            className="absolute inset-0
+            bg-gradient-to-t
+            from-black via-black/50 to-black/20"
+          />
+
+          {/* Blur Accent */}
+          <div
+            className="absolute top-0 right-0
+            w-[300px] h-[300px]
+            bg-[#FFB38A]/20 blur-[120px]"
+          />
+
+          {/* Content */}
+          <div
+            className="relative z-10
+            h-full flex flex-col justify-end
+            p-8 md:p-14"
           >
-            <div className="absolute -z-1  bg-[url('./assets/ServicesBg.png')] opacity-0 group-hover:opacity-50 w-[500px] h-[500px]  top-0 right-0">s</div>
-            <span className="absolute  top-4 right-4 text-5xl md:text-7xl font-headline text-[#FF5A5A] group-hover:text-[#F7F3F0] group-hover:text-shadow-lg opacity-90">
-              {item.number}
+            <span
+              className="absolute top-8 right-8
+              text-7xl md:text-9xl
+              font-headline text-white/10"
+            >
+              01
             </span>
 
-            <img
-              src={item.image}
-              alt=""
-              className="group-hover:sepia w-10 mb-4"
-            />
-          <div className="group-hover:bg-white/30 p-2 group-hover:rounded-lg">
+            <div
+              className="max-w-3xl
+              translate-y-6
+              group-hover:translate-y-0
+              transition-all duration-500"
+            >
+              <div
+                className="inline-flex items-center gap-2
+                bg-white/10 backdrop-blur-md
+                border border-white/10
+                rounded-full px-4 py-2 mb-6"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#FFD45A]" />
 
-            <h3 className="font-headline text-xl z-4 md:text-2xl text-[#FF8B5A] group-hover:text-shadow-lg group-hover:font-extrabold group-hover:text-[#FF5A5A] mb-2">
-              {item.title}
-            </h3>
+                <span className="text-sm text-[#FFE3A1] tracking-wide">
+                  Featured Service
+                </span>
+              </div>
 
-            <p className="group-hover:text-shadow-lg text-[#00000080]  group-hover:text-black text-sm  md:text-base leading-relaxed">
-              {item.detail}
-            </p>
+              <h3
+                className="text-4xl md:text-7xl
+                font-headline text-white leading-tight"
+              >
+                Wedding Organizer
+              </h3>
+
+              <p
+                className="mt-6 text-white/75
+                text-sm md:text-lg
+                leading-relaxed max-w-2xl"
+              >
+                Kami merancang pernikahan impian Anda dengan konsep
+                eksklusif, detail elegan, dan pengalaman yang tak terlupakan.
+              </p>
+
+              <button
+                className="group/btn mt-8
+                inline-flex items-center gap-3
+                bg-gradient-to-r
+                from-[#FF8A5B] to-[#FFB36B]
+                text-white px-7 py-4 rounded-full
+                shadow-[0_10px_30px_rgba(255,160,100,0.25)]
+                hover:scale-105 transition-all duration-300"
+              >
+                Explore Service
+
+                <ArrowUpRight
+                  size={18}
+                  className="group-hover/btn:-translate-y-0.5
+                  group-hover/btn:translate-x-0.5
+                  transition-all"
+                />
+              </button>
+            </div>
           </div>
-          </div>
-        ))}
+        </div>
+
+        {/* Grid Cards */}
+        <div
+          className="mt-8
+          grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
+          gap-6"
+        >
+          {dataService.slice(1).map((item, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden
+              bg-white/85 backdrop-blur-xl
+              border border-[#F2ECE7]
+              rounded-[30px]
+              p-7 min-h-[320px]
+              flex flex-col justify-between
+              hover:-translate-y-2
+              hover:border-[#FFD7C3]
+              hover:shadow-[0_20px_50px_rgba(255,180,130,0.15)]
+              transition-all duration-500"
+            >
+              {/* Number */}
+              <span
+                className="absolute top-5 right-5
+                text-6xl font-headline
+                text-[#F4E7DD]"
+              >
+                {item.number}
+              </span>
+
+              {/* Icon */}
+              <div
+                className="w-20 h-20 rounded-[24px]
+                bg-gradient-to-br
+                from-[#FFF1E8] to-[#FFE4D5]
+                flex items-center justify-center"
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-10 object-contain
+                  group-hover:scale-110
+                  transition-all duration-500"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="mt-10">
+                <h3
+                  className="text-2xl font-headline
+                  text-[#2B2B2B]"
+                >
+                  {item.title}
+                </h3>
+
+                <p
+                  className="mt-4 text-sm md:text-base
+                  text-gray-500 leading-relaxed"
+                >
+                  {item.detail}
+                </p>
+              </div>
+
+              {/* Arrow */}
+              <div
+                className="mt-8
+                w-11 h-11 rounded-full
+                bg-[#FAF7F4]
+                border border-[#EFE7E1]
+                flex items-center justify-center
+                text-[#D08962]
+                group-hover:bg-gradient-to-r
+                group-hover:from-[#FF8A5B]
+                group-hover:to-[#FFB36B]
+                group-hover:text-white
+                transition-all duration-500"
+              >
+                <ArrowUpRight size={18} />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </section>  
+    </section>
   );
 }
