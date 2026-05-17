@@ -27,7 +27,7 @@ export default function Navigations() {
     { name: "Service", path: "/#service" },
     { name: "Event", path: "/event#event" },
     { name: "Packages", path: "/packages" },
-    { name: "Gallery", path: "/gallery" },
+    { name: "Gallery", path: "/#gallery" },
     { name: "Testimoni", path: "/#testimony" },
     { name: "Contact", path: "/#contact" },
   ];
@@ -82,8 +82,8 @@ export default function Navigations() {
 
             {/* CTA */}
             <div className="hidden lg:flex items-center">
-              <a
-                href="#contact"
+              <Link
+                to="#contact"
                 className="group bg-gradient-to-r
                 from-[#FF8A5B] to-[#FFB36B]
                 hover:scale-105 transition-all duration-300
@@ -97,7 +97,7 @@ export default function Navigations() {
                   size={18}
                   className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition"
                 />
-              </a>
+              </Link>
             </div>
 
             {/* Mobile Button */}

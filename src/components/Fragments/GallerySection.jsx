@@ -13,7 +13,7 @@ export default function GallerySection() {
   };
 
   return (
-    <section className="px-4 sm:px-6 md:px-20 py-16">
+    <section id="gallery" className="px-4 sm:px-6 md:px-20 py-16">
       {/* HEADER */}
       <div className="text-center mb-10">
         <span className="font-base text-[#FF8B5A] uppercase text-sm md:text-base">
@@ -100,7 +100,7 @@ export default function GallerySection() {
       {/* BUTTON */}
       <div className="w-full text-center pt-20">
         <a
-          href=""
+          href="/gallery"
           className="hover:scale-110 transition-all duration-300 ease-in-out hover:shadow-lg bg-gradient-to-r from-[#FF8B5A] to-[#FF5A5A] px-6 py-3 rounded-full text-white text-sm md:text-base"
         >
           Lihat Semua Gallery

@@ -115,7 +115,7 @@ export default function HeroSection() {
           </div>
 
           {/* Bottom Info */}
-          <div className="mt-16 flex flex-wrap gap-5">
+          <div className="mt-12 flex flex-wrap gap-5">
             {[
               ["150+", "Wedding Event"],
               ["5★", "Premium Service"],
