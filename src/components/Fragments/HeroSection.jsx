@@ -14,22 +14,17 @@ export default function HeroSection() {
           style={{ backgroundImage: `url(${HeroBg})` }}
         />
 
-        {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/60" />
 
-        {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/40" />
 
-        {/* Blur Accent */}
         <div className="absolute top-0 left-0 w-[450px] h-[450px] bg-[#FFB38A]/20 blur-[160px] rounded-full" />
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#FFD45A]/10 blur-[160px] rounded-full" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 w-full px-6 md:px-16 lg:px-24">
         <div className="max-w-5xl">
           
-          {/* Badge */}
           <div
             className="inline-flex items-center gap-3
             bg-white/10 backdrop-blur-md

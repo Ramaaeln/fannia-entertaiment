@@ -2,6 +2,7 @@ import { BrowserRouter } from "react-router";
 import Routers from "./routers/Routers";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Chat from "./components/Fragments/Chats/Chatbots";
 
 function ScrollToHash() {
   const { hash } = useLocation();
@@ -18,8 +19,9 @@ function ScrollToHash() {
 function App() {
   return (
     <BrowserRouter>
-      <Routers/>
       <ScrollToHash />
+      <Routers/>
+      <Chat/>
     </BrowserRouter>
   );
 }

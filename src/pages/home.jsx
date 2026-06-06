@@ -7,6 +7,7 @@ import GallerySection from "../components/Fragments/GallerySection"
 import TestimonySection from "../components/Fragments/TestimonySection";
 import ContactSection from "../components/Fragments/ContactSection"
 import FooterSection from "../components/Fragments/FooterSection";
+import Chat from "../components/Fragments/Chats/Chatbots";
 
 export default function HomePage() {
   return (
@@ -19,6 +20,7 @@ export default function HomePage() {
       <GallerySection/>
       <TestimonySection/>
       <ContactSection/>
+      <Chat/>
       <FooterSection/>
     </div>
   );
