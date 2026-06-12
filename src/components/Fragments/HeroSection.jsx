@@ -1,11 +1,18 @@
 import HeroBg from "../../assets/hero.jpg";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export default function HeroSection() {
+  const whatsappNumber = "6281316429729";
+
+  const message = encodeURIComponent(
+    `Halo Fannia Entertainment, Saya ingin melakukan konsultasi terkait layanan yang tersedia.
+    
+Terima kasih.`,
+  );
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden flex items-center"
+      className="relative min-h-screen mt-20 py-4 md:pt-2 overflow-hidden flex items-center"
     >
       {/* Background */}
       <div className="absolute inset-0">
@@ -24,7 +31,6 @@ export default function HeroSection() {
 
       <div className="relative z-10 w-full px-6 md:px-16 lg:px-24">
         <div className="max-w-5xl">
-          
           <div
             className="inline-flex items-center gap-3
             bg-white/10 backdrop-blur-md
@@ -63,14 +69,13 @@ export default function HeroSection() {
             text-base md:text-xl
             text-white/75 leading-relaxed"
           >
-            Kami membantu merancang pernikahan dan berbagai acara spesial
-            dengan konsep elegan, modern, serta pelayanan profesional untuk
-            menciptakan momen yang tak terlupakan.
+            Kami membantu merancang pernikahan dan berbagai acara spesial dengan
+            konsep elegan, modern, serta pelayanan profesional untuk menciptakan
+            momen yang tak terlupakan.
           </p>
 
           {/* CTA */}
           <div className="mt-12 flex flex-col sm:flex-row gap-5">
-            
             {/* Primary Button */}
             <a
               href="#service"
@@ -81,7 +86,6 @@ export default function HeroSection() {
               shadow-[0_15px_40px_rgba(255,140,90,0.35)]"
             >
               Lihat Layanan
-
               <ArrowRight
                 size={18}
                 className="group-hover:translate-x-1 transition"
@@ -90,21 +94,22 @@ export default function HeroSection() {
 
             {/* Secondary Button */}
             <a
-              href="#contact"
+              href={`https://wa.me/${whatsappNumber}?text=${message}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-3
-              bg-white/10 hover:bg-white/15
-              border border-white/15
-              backdrop-blur-md
-              text-white px-8 py-4 rounded-full
-              transition-all duration-300"
+  bg-white/10 hover:bg-white/15
+  border border-white/15
+  backdrop-blur-md
+  text-white px-8 py-4 rounded-full
+  transition-all duration-300"
             >
               <div
                 className="w-9 h-9 rounded-full
-                bg-white/15 flex items-center justify-center"
+    bg-white/15 flex items-center justify-center"
               >
-                <Play size={14} fill="white" />
+                <ArrowUpRight size={14} fill="white" />
               </div>
-
               Konsultasi Sekarang
             </a>
           </div>
@@ -112,9 +117,9 @@ export default function HeroSection() {
           {/* Bottom Info */}
           <div className="mt-12 flex flex-wrap gap-5">
             {[
-              ["150+", "Wedding Event"],
+              ["450+", "Proven Trust"],
               ["5★", "Premium Service"],
-              ["100%", "Happy Client"],
+              ["19", "Years of Experience"],
             ].map(([value, label]) => (
               <div
                 key={label}
@@ -122,9 +127,7 @@ export default function HeroSection() {
                 backdrop-blur-md rounded-3xl
                 px-6 py-5 min-w-[170px]"
               >
-                <h3 className="text-3xl font-bold text-white">
-                  {value}
-                </h3>
+                <h3 className="text-3xl font-bold text-white">{value}</h3>
 
                 <p className="mt-1 text-sm tracking-wide text-white/60">
                   {label}

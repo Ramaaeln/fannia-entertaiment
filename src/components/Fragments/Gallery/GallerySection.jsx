@@ -1,9 +1,9 @@
-import Gallery1 from "../../../assets/Gallery 1.png";
-import Gallery2 from "../../../assets/Gallery 2.png";
-import Gallery3 from "../../../assets/Gallery 3.png";
-import Gallery4 from "../../../assets/Gallery 4.png";
-import Gallery5 from "../../../assets/gallery.png";
-import Gallery6 from "../../../assets/gallery.png";
+import Gallery1 from "../../../assets/Gallery 13.jpg";
+import Gallery2 from "../../../assets/Gallery 14.jpg";
+import Gallery3 from "../../../assets/Gallery 16.jpg";
+import Gallery4 from "../../../assets/Gallery 15.jpg";
+import Gallery5 from "../../../assets/Gallery 12.jpg";
+import Gallery6 from "../../../assets/Gallery 11.jpeg";
 
 import {
   Sparkles,

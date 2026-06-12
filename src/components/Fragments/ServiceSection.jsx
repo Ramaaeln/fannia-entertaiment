@@ -1,4 +1,4 @@
-import ServiceImage1 from "../../assets/ServicesBg.png";
+import ServiceImage1 from "../../assets/ServicesBg.jpg";
 import ServiceImage2 from "../../assets/service2.png";
 import ServiceImage3 from "../../assets/service3.png";
 import ServiceImage4 from "../../assets/service4.png";
@@ -190,7 +190,8 @@ export default function ServiceSection() {
                 eksklusif, detail elegan, dan pengalaman yang tak terlupakan.
               </p>
 
-              <button
+              <a
+                href="#service1"
                 className="group/btn mt-8
                 inline-flex items-center gap-3
                 bg-gradient-to-r
@@ -207,14 +208,15 @@ export default function ServiceSection() {
                   group-hover/btn:translate-x-0.5
                   transition-all"
                 />
-              </button>
+              </a>
             </div>
           </div>
         </div>
 
         {/* Grid Cards */}
         <div
-          className="mt-8
+        id="service1"
+          className="-mt-8 pt-26
           grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
           gap-6"
         >
@@ -274,22 +276,7 @@ export default function ServiceSection() {
                 </p>
               </div>
 
-              {/* Arrow */}
-              <div
-                className="mt-8
-                w-11 h-11 rounded-full
-                bg-[#FAF7F4]
-                border border-[#EFE7E1]
-                flex items-center justify-center
-                text-[#D08962]
-                group-hover:bg-gradient-to-r
-                group-hover:from-[#FF8A5B]
-                group-hover:to-[#FFB36B]
-                group-hover:text-white
-                transition-all duration-500"
-              >
-                <ArrowUpRight size={18} />
-              </div>
+             
             </div>
           ))}
         </div>

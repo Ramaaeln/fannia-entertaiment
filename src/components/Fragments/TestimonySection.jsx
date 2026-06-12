@@ -1,69 +1,175 @@
 import { useState, useEffect } from "react";
-
-import ProfileTestimony from "../../assets/profileTestimony.png";
-
 import {
   ArrowLeft,
   ArrowRight,
   Quote,
   Sparkles,
   Star,
+  LogIn,
+  MessageSquarePlus,
 } from "lucide-react";
 
+import ProfileTestimony from "../../assets/profileTestimony.png";
+import DefaultAvatar from "../../assets/icons/default-avatar.png";
+import axios from "axios";
+import { supabase } from "../../lib/supabase";
+import { useAuth } from "../../contexts/AuthContext";
+
 export default function TestimonySection() {
-  const dataTestimony = [
-    {
-      image: ProfileTestimony,
-      title: "Hilmy & Sasa",
-      subtitle: "Wedding • September 2023",
-      deskripsi:
-        "Fannia Entertainment benar-benar membuat hari pernikahan kami menjadi luar biasa. Setiap detail dipersiapkan dengan sangat sempurna dan profesional.",
-    },
-
-    {
-      image: ProfileTestimony,
-      title: "Rizky & Aulia",
-      subtitle: "Wedding • Januari 2024",
-      deskripsi:
-        "Pelayanan sangat profesional dan tim sangat membantu dari awal hingga akhir acara. Semua berjalan lancar tanpa kendala.",
-    },
-
-    {
-      image: ProfileTestimony,
-      title: "Andi Corp",
-      subtitle: "Corporate Event",
-      deskripsi:
-        "Konsep acara yang kreatif dan elegan membuat event perusahaan kami terasa lebih premium dan berkesan.",
-    },
-  ];
-
   const [current, setCurrent] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
+  const [message, setMessage] = useState("");
+  const [notification, setNotification] = useState(null);
+  const [testimonials, setTestimonials] = useState([]);
+  const [submitting, setSubmitting] = useState(false);
+
+  const { user, loading } = useAuth();
+
+  // Pastikan index selalu valid
+  useEffect(() => {
+    if (testimonials.length > 0 && current >= testimonials.length) {
+      setCurrent(0);
+    }
+  }, [testimonials.length, current]);
+
+  const activeTestimonial =
+    testimonials.length > 0
+      ? testimonials[Math.min(current, testimonials.length - 1)]
+      : null;
 
   const prevSlide = () => {
-    setCurrent(
-      current === 0
-        ? dataTestimony.length - 1
-        : current - 1
-    );
+    if (testimonials.length === 0) return;
+
+    setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
 
   const nextSlide = () => {
-    setCurrent(
-      current === dataTestimony.length - 1
-        ? 0
-        : current + 1
-    );
+    if (testimonials.length === 0) return;
+
+    setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
-  // Auto Slide
+  const loginGoogle = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: window.location.origin,
+      },
+    });
+  };
+
+  const logout = async () => {
+    await supabase.auth.signOut();
+  };
+
+  const showMessage = (type, text) => {
+    setNotification({ type, text });
+
+    setTimeout(() => {
+      setNotification(null);
+    }, 3000);
+  };
+
+  const submitTestimony = async () => {
+    try {
+      if (submitting) return;
+
+      if (!message.trim()) {
+        showMessage("error", "Testimoni tidak boleh kosong");
+        return;
+      }
+
+      setSubmitting(true);
+
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        showMessage("error", "Anda harus login untuk mengirim testimoni");
+        return;
+      }
+
+      await axios.post(
+        `${import.meta.env.VITE_URL}/testimonials`,
+        {
+          message: message.trim(),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${session.access_token}`,
+          },
+        },
+      );
+
+      setMessage("");
+      setOpenModal(false);
+
+      showMessage("success", "Testimoni berhasil dikirim");
+    } catch (error) {
+      console.error(error);
+      showMessage("error", "Gagal mengirim testimoni");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   useEffect(() => {
+    if (testimonials.length <= 1) return;
+
     const interval = setInterval(() => {
-      nextSlide();
+      setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [current]);
+  }, [testimonials.length]);
 
+  useEffect(() => {
+    if (window.location.hash.includes("access_token")) {
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, []);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_URL}/testimonials`);
+
+        setTestimonials(res.data || []);
+      } catch (error) {
+        console.error("Fetch testimonial error:", error);
+      }
+    };
+
+    fetchTestimonials();
+
+    const channel = supabase
+      .channel("testimonials")
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "testimonials",
+        },
+        () => {
+          fetchTestimonials();
+        },
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  if (testimonials.length === 0) {
+    return (
+      <section id="testimony" className="py-24 text-center">
+        Belum ada testimoni
+      </section>
+    );
+  }
   return (
     <section
       id="testimony"
@@ -89,7 +195,6 @@ export default function TestimonySection() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
-          
           {/* Badge */}
           <div
             className="inline-flex items-center gap-2
@@ -124,14 +229,118 @@ export default function TestimonySection() {
             className="mt-6 text-sm md:text-lg
             text-gray-500 leading-relaxed"
           >
-            Kepuasan klien adalah prioritas utama kami dalam
-            menciptakan acara yang elegan dan berkesan.
+            Kepuasan klien adalah prioritas utama kami dalam menciptakan acara
+            yang elegan dan berkesan.
           </p>
+          <div className="mt-8 flex justify-center">
+            {loading ? (
+              <div className="flex flex-col items-center gap-4">
+                <div
+                  className="
+        w-16 h-16
+        rounded-full
+        bg-gray-200
+        animate-pulse"
+                />
+
+                <div
+                  className="
+        w-32 h-4
+        rounded-full
+        bg-gray-200
+        animate-pulse"
+                />
+              </div>
+            ) : !user ? (
+              <button
+                onClick={loginGoogle}
+                className="
+      inline-flex items-center gap-2
+      px-6 py-3 rounded-full
+      bg-gradient-to-r
+      from-[#FF8A5B]
+      to-[#FFB36B]
+      text-white
+      shadow-lg
+      hover:scale-105
+      transition-all duration-300"
+              >
+                <LogIn size={18} />
+                Login dengan Google
+              </button>
+            ) : (
+              <div className="flex flex-col items-center gap-4">
+                <img
+                  src={
+                    user?.user_metadata?.picture
+                      ? user.user_metadata.picture
+                      : DefaultAvatar
+                  }
+                  onError={(e) => {
+                    e.currentTarget.src = DefaultAvatar;
+                  }}
+                  alt="profile"
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+
+                <h4 className="font-semibold">
+                  {user?.user_metadata?.name || "Guest"}
+                </h4>
+
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setOpenModal(true)}
+                    className="
+          inline-flex items-center gap-2
+          px-6 py-3 rounded-full
+          bg-gradient-to-r
+          from-[#FF8A5B]
+          to-[#FFB36B]
+          text-white"
+                  >
+                    <MessageSquarePlus size={18} />
+                    Tulis Testimoni
+                  </button>
+
+                  <button
+                    onClick={logout}
+                    className="
+          px-5 py-3 rounded-full
+          border border-gray-300"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
+            {notification && (
+  <div
+    className={`
+      max-w-2xl
+      mx-auto
+      mb-8
+      px-5
+      py-4
+      mt-8
+      rounded-2xl
+      border
+      text-center
+      transition-all
+      ${
+        notification.type === "success"
+          ? "bg-[#FFF8F3] border-[#FFD9C7] text-[#C9845E]"
+          : "bg-red-50 border-red-200 text-red-600"
+      }
+    `}
+  >
+    {notification.text}
+  </div>
+)}
         {/* Testimonial Card */}
         <div className="mt-20 relative">
-          
           <div
             className="relative overflow-hidden
             bg-white/85 backdrop-blur-2xl
@@ -175,7 +384,7 @@ export default function TestimonySection() {
               text-[#2B2B2B]
               font-light max-w-4xl"
             >
-              “{dataTestimony[current].deskripsi}”
+              “{activeTestimonial?.message}”
             </p>
 
             {/* Bottom */}
@@ -186,7 +395,6 @@ export default function TestimonySection() {
             >
               {/* Profile */}
               <div className="flex items-center gap-5">
-                
                 {/* Image */}
                 <div
                   className="p-[3px] rounded-full
@@ -194,8 +402,11 @@ export default function TestimonySection() {
                   from-[#FFB36B] to-[#FF8B5A]"
                 >
                   <img
-                    src={dataTestimony[current].image}
-                    alt={dataTestimony[current].title}
+                    src={activeTestimonial?.user_avatar || DefaultAvatar}
+                    onError={(e) => {
+                      e.currentTarget.src = DefaultAvatar;
+                    }}
+                    alt={activeTestimonial?.user_name || "Guest"}
                     className="w-16 h-16 rounded-full object-cover"
                   />
                 </div>
@@ -206,21 +417,28 @@ export default function TestimonySection() {
                     className="text-xl font-semibold
                     text-[#1B1B1B]"
                   >
-                    {dataTestimony[current].title}
+                    {activeTestimonial?.user_name || "Guest"}
                   </h4>
 
                   <p
                     className="mt-1 text-sm
                     text-gray-500 tracking-wide"
                   >
-                    {dataTestimony[current].subtitle}
+                    {activeTestimonial?.created_at &&
+                      new Date(activeTestimonial.created_at).toLocaleDateString(
+                        "id-ID",
+                        {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        },
+                      )}
                   </p>
                 </div>
               </div>
 
               {/* Navigation */}
               <div className="flex items-center gap-4">
-                
                 {/* Prev */}
                 <button
                   onClick={prevSlide}
@@ -240,7 +458,7 @@ export default function TestimonySection() {
 
                 {/* Dots */}
                 <div className="flex items-center gap-2">
-                  {dataTestimony.map((_, index) => (
+                  {testimonials.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrent(index)}
@@ -274,6 +492,78 @@ export default function TestimonySection() {
           </div>
         </div>
       </div>
+      {openModal && (
+        <div
+          className="
+    fixed inset-0 z-[999]
+    flex items-center justify-center
+    bg-black/50 px-5"
+        >
+          <div
+            className="
+      bg-white
+      rounded-3xl
+      p-8
+      w-full
+      max-w-lg"
+          >
+            <h3 className="text-2xl font-semibold">Tulis Testimoni</h3>
+
+            <p className="text-gray-500 mt-2">
+              Bagikan pengalaman Anda bersama Fannia Entertainment.
+            </p>
+
+            <textarea
+              rows={5}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="Tulis testimoni..."
+              className="
+        mt-5
+        w-full
+        border
+        rounded-xl
+        p-4
+        resize-none
+        outline-none"
+            />
+
+            <div
+              className="
+        mt-6
+        flex
+        justify-end
+        gap-3"
+            >
+              <button
+                onClick={() => setOpenModal(false)}
+                className="
+          px-5 py-2
+          border
+          rounded-xl"
+              >
+                Batal
+              </button>
+
+              <button
+                onClick={submitTestimony}
+                disabled={submitting}
+                className="
+    px-5 py-2
+    rounded-xl
+    bg-gradient-to-r
+    from-[#FF8A5B]
+    to-[#FFB36B]
+    text-white
+    disabled:opacity-50
+    disabled:cursor-not-allowed"
+              >
+                {submitting ? "Mengirim..." : "Kirim"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

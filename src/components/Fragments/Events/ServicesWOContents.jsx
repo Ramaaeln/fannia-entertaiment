@@ -8,7 +8,6 @@ import Icons7 from "../../../assets/icons/entertainment.png";
 import Icons8 from "../../../assets/icons/team.png";
 import Icons9 from "../../../assets/icons/bridalsuit.png";
 
-import { ArrowUpRight } from "lucide-react";
 
 export default function ServicesWOContents() {
   const ServicesWO = [
@@ -181,21 +180,7 @@ export default function ServicesWOContents() {
               </div>
 
               {/* Arrow */}
-              <div
-                className="relative z-10 mt-6
-                w-10 h-10 rounded-full
-                bg-[#FAF7F4]
-                border border-[#EFE7E1]
-                flex items-center justify-center
-                text-[#D08962]
-                group-hover:bg-gradient-to-r
-                group-hover:from-[#FF8A5B]
-                group-hover:to-[#FFB36B]
-                group-hover:text-white
-                transition-all duration-500"
-              >
-                <ArrowUpRight size={18} />
-              </div>
+             
             </div>
           ))}
         </div>

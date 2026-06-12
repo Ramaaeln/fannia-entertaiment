@@ -1,4 +1,4 @@
-import MisiImage from "../../assets/misi.png";
+import MisiImage from "../../assets/misi.jpg";
 import {
   Sparkles,
   Check,

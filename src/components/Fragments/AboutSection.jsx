@@ -1,4 +1,4 @@
-import AboutImage from "../../assets/about.png";
+import AboutImage from "../../assets/about.jpg";
 import LogosFannia from "../../assets/Fannia Entertainment.png";
 import Rectagle from "../../assets/rectagle.png";
 import Pengalaman from "../../assets/pengalaman.png";
@@ -41,7 +41,7 @@ export default function AboutSection() {
         </p>
 
         <a
-          href=""
+          href="#testimony"
           className="text-white w-fit mx-auto md:mx-0 bg-gradient-to-r from-[#FF5A5A] to-[#FF8B5A] px-6 py-3 rounded-full font-base text-sm md:text-lg"
         >
           Lihat Portofolio

@@ -3,13 +3,19 @@ import Image1 from "../../assets/Gallery 1.png";
 import Image2 from "../../assets/Gallery 2.png";
 import Image3 from "../../assets/Gallery 3.png";
 import Image4 from "../../assets/Gallery 4.png";
+import Image5 from "../../assets/Gallery 5.jpg";
+import Image6 from "../../assets/Gallery 6.jpg";
+import Image7 from "../../assets/Gallery 7.jpg";
+import Image8 from "../../assets/Gallery 8.jpg";
+import Image9 from "../../assets/Gallery 9.jpg";
+import Image10 from "../../assets/Gallery 10.jpg";
 
 export default function GallerySection() {
   const dataGallery = {
-    datas1: [{ images: Image1 }, { images: Image3 }],
-    datas2: [{ images: Image2 }, { images: Image4 }],
-    datas3: [{ images: Image1 }, { images: Image3 }],
-    datas4: [{ images: Image2 }, { images: Image4 }],
+    datas1: [{ images: Image7 }, { images: Image3 }],
+    datas2: [{ images: Image8 }, { images: Image4 }],
+    datas3: [{ images: Image10 }, { images: Image9 }],
+    datas4: [{ images: Image5 }, { images: Image6 }],
   };
 
   return (

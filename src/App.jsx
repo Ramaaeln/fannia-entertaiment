@@ -8,9 +8,20 @@ function ScrollToHash() {
   const { hash } = useLocation();
 
   useEffect(() => {
-    if (hash) {
-      const el = document.querySelector(hash);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (!hash) return;
+
+    const id = hash.replace("#", "");
+
+    // abaikan token oauth
+    if (id.includes("access_token")) return;
+
+    const element =
+      document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+      });
     }
   }, [hash]);
 

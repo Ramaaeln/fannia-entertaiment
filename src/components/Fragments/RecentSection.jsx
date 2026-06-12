@@ -3,19 +3,19 @@ import Recent from "../../assets/recent.png";
 export default function RecentSection() {
   const recent = [
     {
-      value: "150+",
-      detail: "Event Berhasil",
+      value: "450+",
+      detail: "Provent Trusted",
     },
     {
-      value: "100+",
-      detail: "Klien Puas",
+      value: "650+",
+      detail: "Flawless Executions",
     },
     {
-      value: "5+",
-      detail: "Tahun Pengalaman",
+      value: "19",
+      detail: "Years of Experience",
     },
     {
-      value: "30+",
+      value: "10+",
       detail: "Vendor Partners",
     },
   ];

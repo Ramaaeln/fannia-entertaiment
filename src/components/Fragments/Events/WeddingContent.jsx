@@ -3,11 +3,11 @@ import FooterSection from "../FooterSection";
 import MitraVendorContent from "./MitraVendorContents";
 import ServicesWOContents from "./ServicesWOContents";
 import WorkProcess from "./WorkProcessContent";
-import HeroImage from "../../../assets/EventImageWO.png";
+import HeroImage from "../../../assets/EventImageWO.jpeg";
 import Images1 from "../../../assets/WOImages2.png";
 import Images2 from "../../../assets/WOImages3.png";
-import Images3 from "../../../assets/WOImages4.png";
-import Images4 from "../../../assets/WOImages5.png";
+import Images3 from "../../../assets/WOImages4.jpeg";
+import Images4 from "../../../assets/WOImages5.jpg";
 import Images5 from "../../../assets/WOImages6.png";
 
 

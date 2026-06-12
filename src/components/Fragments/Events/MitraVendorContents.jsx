@@ -2,7 +2,6 @@ import Mitra1 from "../../../assets/icons/gsk.png";
 
 import {
   Sparkles,
-  ArrowUpRight,
 } from "lucide-react";
 
 export default function MitraVendorContent() {
@@ -177,21 +176,7 @@ export default function MitraVendorContent() {
               </div>
 
               {/* Arrow */}
-              <div
-                className="relative z-10
-                w-11 h-11 rounded-full
-                bg-[#FAF7F4]
-                border border-[#EFE7E1]
-                flex items-center justify-center
-                text-[#D08962]
-                group-hover:bg-gradient-to-r
-                group-hover:from-[#FF8A5B]
-                group-hover:to-[#FFB36B]
-                group-hover:text-white
-                transition-all duration-500"
-              >
-                <ArrowUpRight size={18} />
-              </div>
+              
             </div>
           ))}
         </div>
