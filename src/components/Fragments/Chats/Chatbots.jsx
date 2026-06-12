@@ -63,11 +63,6 @@ export default function ChatWidget() {
       message: "Saya ingin informasi paket MC",
     },
     {
-      icon: Camera,
-      label: "Foto & Video",
-      message: "Saya ingin informasi paket foto dan video",
-    },
-    {
       icon: PartyPopper,
       label: "Event Organizer",
       message: "Saya ingin informasi layanan event organizer",
