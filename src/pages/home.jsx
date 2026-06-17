@@ -20,7 +20,6 @@ export default function HomePage() {
       <GallerySection/>
       <TestimonySection/>
       <ContactSection/>
-      <Chat/>
       <FooterSection/>
     </div>
   );

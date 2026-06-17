@@ -1,4 +1,8 @@
-import Mitra1 from "../../../assets/icons/gsk.png";
+import Mitra1 from "../../../assets/icons/vendor/i studio.jpg";
+import Mitra2 from "../../../assets/icons/vendor/Ayubintang.jpg";
+import Mitra3 from "../../../assets/icons/vendor/lahasa.jpg";
+import Mitra4 from "../../../assets/icons/vendor/parikesit.jpg";
+import Mitra5 from "../../../assets/icons/vendor/Yayasan Ragam Budaya.jpg";
 
 import {
   Sparkles,
@@ -7,29 +11,29 @@ import {
 export default function MitraVendorContent() {
   const mitra = [
     {
-      name: "Gao Shan Kitchen",
+      name: "Lima Moto",
       logo: Mitra1,
+      category: "Fotografer",
+    },
+    {
+      name: "Ayu Bintang Catering",
+      logo: Mitra2,
       category: "Catering",
     },
     {
-      name: "Gao Shan Kitchen",
-      logo: Mitra1,
-      category: "Decoration",
-    },
-    {
-      name: "Gao Shan Kitchen",
-      logo: Mitra1,
+      name: "Lahasa Entertainment",
+      logo: Mitra3,
       category: "Entertainment",
     },
     {
-      name: "Gao Shan Kitchen",
-      logo: Mitra1,
-      category: "Documentation",
+      name: "Sanggar Parikesit",
+      logo: Mitra4,
+      category: "Entertainment",
     },
     {
-      name: "Gao Shan Kitchen",
-      logo: Mitra1,
-      category: "Wedding Venue",
+      name: "Yayasan Ragam Budaya",
+      logo: Mitra5,
+      category: "Cultural Events",
     },
   ];
 
