@@ -25,7 +25,6 @@ export default function TestimonySection() {
 
   const { user, loading } = useAuth();
 
-  // Pastikan index selalu valid
   useEffect(() => {
     if (testimonials.length > 0 && current >= testimonials.length) {
       setCurrent(0);
@@ -39,13 +38,11 @@ export default function TestimonySection() {
 
   const prevSlide = () => {
     if (testimonials.length === 0) return;
-
     setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
 
   const nextSlide = () => {
     if (testimonials.length === 0) return;
-
     setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
@@ -64,7 +61,6 @@ export default function TestimonySection() {
 
   const showMessage = (type, text) => {
     setNotification({ type, text });
-
     setTimeout(() => {
       setNotification(null);
     }, 3000);
@@ -104,7 +100,6 @@ export default function TestimonySection() {
 
       setMessage("");
       setOpenModal(false);
-
       showMessage("success", "Testimoni berhasil dikirim");
     } catch (error) {
       console.error(error);
@@ -134,7 +129,6 @@ export default function TestimonySection() {
     const fetchTestimonials = async () => {
       try {
         const res = await axios.get(`${import.meta.env.VITE_URL}/testimonials`);
-
         setTestimonials(res.data || []);
       } catch (error) {
         console.error("Fetch testimonial error:", error);
@@ -163,107 +157,53 @@ export default function TestimonySection() {
     };
   }, []);
 
-  if (testimonials.length === 0) {
-    return (
-      <section id="testimony" className="py-24 text-center">
-        Belum ada testimoni
-      </section>
-    );
-  }
+  // PERBAIKAN: Hapus early return `if (testimonials.length === 0)` dari sini!
+
   return (
     <section
       id="testimony"
-      className="relative overflow-hidden
-      bg-gradient-to-b
-      from-[#FAF7F4] to-white
-      py-24 px-5 md:px-10"
+      className="relative overflow-hidden bg-gradient-to-b from-[#FAF7F4] to-white py-24 px-5 md:px-10"
     >
       {/* Blur Accent */}
-      <div
-        className="absolute top-0 left-0
-        w-[350px] h-[350px]
-        bg-[#FFB38A]/20 blur-[150px] rounded-full"
-      />
-
-      <div
-        className="absolute bottom-0 right-0
-        w-[350px] h-[350px]
-        bg-[#FFD45A]/10 blur-[150px] rounded-full"
-      />
+      <div className="absolute top-0 left-0 w-[350px] h-[350px] bg-[#FFB38A]/20 blur-[150px] rounded-full" />
+      <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-[#FFD45A]/10 blur-[150px] rounded-full" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
           {/* Badge */}
-          <div
-            className="inline-flex items-center gap-2
-            bg-white border border-[#EFE7E1]
-            rounded-full px-5 py-2 shadow-sm"
-          >
+          <div className="inline-flex items-center gap-2 bg-white border border-[#EFE7E1] rounded-full px-5 py-2 shadow-sm">
             <Sparkles size={14} className="text-[#E58B63]" />
-
             <span className="text-sm tracking-wide text-[#C9845E]">
               Client Experience
             </span>
           </div>
 
           {/* Title */}
-          <h2
-            className="mt-6 text-4xl md:text-6xl
-            font-headline font-medium
-            text-[#1B1B1B]"
-          >
+          <h2 className="mt-6 text-4xl md:text-6xl font-headline font-medium text-[#1B1B1B]">
             Testimoni
-            <span
-              className="ml-3 bg-gradient-to-r
-              from-[#FFB36B] via-[#FF8B5A] to-[#FF6A5B]
-              bg-clip-text text-transparent italic"
-            >
+            <span className="ml-3 bg-gradient-to-r from-[#FFB36B] via-[#FF8B5A] to-[#FF6A5B] bg-clip-text text-transparent italic">
               Klien
             </span>
           </h2>
 
           {/* Desc */}
-          <p
-            className="mt-6 text-sm md:text-lg
-            text-gray-500 leading-relaxed"
-          >
+          <p className="mt-6 text-sm md:text-lg text-gray-500 leading-relaxed">
             Kepuasan klien adalah prioritas utama kami dalam menciptakan acara
             yang elegan dan berkesan.
           </p>
+
+          {/* Bagian Login / Tulis Testimoni */}
           <div className="mt-8 flex justify-center">
             {loading ? (
               <div className="flex flex-col items-center gap-4">
-                <div
-                  className="
-        w-16 h-16
-        rounded-full
-        bg-gray-200
-        animate-pulse"
-                />
-
-                <div
-                  className="
-        w-32 h-4
-        rounded-full
-        bg-gray-200
-        animate-pulse"
-                />
+                <div className="w-16 h-16 rounded-full bg-gray-200 animate-pulse" />
+                <div className="w-32 h-4 rounded-full bg-gray-200 animate-pulse" />
               </div>
             ) : !user ? (
               <button
                 onClick={loginGoogle}
-                className="
-      inline-flex items-center gap-2
-      px-6 py-3 rounded-full
-      bg-gradient-to-r
-      from-[#FF8A5B]
-      to-[#FFB36B]
-      text-white
-      shadow-lg
-      hover:scale-105
-      transition-all duration-300"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF8A5B] to-[#FFB36B] text-white shadow-lg hover:scale-105 transition-all duration-300"
               >
                 <LogIn size={18} />
                 Login dengan Google
@@ -290,13 +230,7 @@ export default function TestimonySection() {
                 <div className="flex gap-3">
                   <button
                     onClick={() => setOpenModal(true)}
-                    className="
-          inline-flex items-center gap-2
-          px-6 py-3 rounded-full
-          bg-gradient-to-r
-          from-[#FF8A5B]
-          to-[#FFB36B]
-          text-white"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF8A5B] to-[#FFB36B] text-white"
                   >
                     <MessageSquarePlus size={18} />
                     Tulis Testimoni
@@ -304,9 +238,7 @@ export default function TestimonySection() {
 
                   <button
                     onClick={logout}
-                    className="
-          px-5 py-3 rounded-full
-          border border-gray-300"
+                    className="px-5 py-3 rounded-full border border-gray-300"
                   >
                     Logout
                   </button>
@@ -316,247 +248,148 @@ export default function TestimonySection() {
           </div>
         </div>
 
-            {notification && (
-  <div
-    className={`
-      max-w-2xl
-      mx-auto
-      mb-8
-      px-5
-      py-4
-      mt-8
-      rounded-2xl
-      border
-      text-center
-      transition-all
-      ${
-        notification.type === "success"
-          ? "bg-[#FFF8F3] border-[#FFD9C7] text-[#C9845E]"
-          : "bg-red-50 border-red-200 text-red-600"
-      }
-    `}
-  >
-    {notification.text}
-  </div>
-)}
-        {/* Testimonial Card */}
-        <div className="mt-20 relative">
+        {notification && (
           <div
-            className="relative overflow-hidden
-            bg-white/85 backdrop-blur-2xl
-            border border-[#F2ECE7]
-            rounded-[40px]
-            p-8 md:p-14
-            min-h-[420px]
-            shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
+            className={`max-w-2xl mx-auto mb-8 px-5 py-4 mt-8 rounded-2xl border text-center transition-all ${
+              notification.type === "success"
+                ? "bg-[#FFF8F3] border-[#FFD9C7] text-[#C9845E]"
+                : "bg-red-50 border-red-200 text-red-600"
+            }`}
           >
-            {/* Glow */}
-            <div
-              className="absolute top-0 right-0
-              w-[250px] h-[250px]
-              bg-[#FFB38A]/10 blur-[120px]"
-            />
+            {notification.text}
+          </div>
+        )}
 
-            {/* Quote */}
-            <div
-              className="absolute top-8 right-8
-              text-[#FFE0D0]"
-            >
-              <Quote size={80} strokeWidth={1.5} />
+        {/* Testimonial Card Section */}
+        <div className="mt-20 relative">
+          {testimonials.length === 0 ? (
+            /* Tampilan jika database kosong */
+            <div className="relative text-center bg-white/85 backdrop-blur-2xl border border-[#F2ECE7] rounded-[40px] p-14 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+              <p className="text-xl text-gray-400 font-light">
+                Belum ada testimoni. Jadilah yang pertama memberikan ulasan!
+              </p>
             </div>
+          ) : (
+            /* Tampilan jika database terisi */
+            <div className="relative overflow-hidden bg-white/85 backdrop-blur-2xl border border-[#F2ECE7] rounded-[40px] p-8 md:p-14 min-h-[420px] shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
+              {/* Glow */}
+              <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-[#FFB38A]/10 blur-[120px]" />
 
-            {/* Rating */}
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, index) => (
-                <Star
-                  key={index}
-                  size={18}
-                  className="fill-[#FFB36B] text-[#FFB36B]"
-                />
-              ))}
-            </div>
+              {/* Quote */}
+              <div className="absolute top-8 right-8 text-[#FFE0D0]">
+                <Quote size={80} strokeWidth={1.5} />
+              </div>
 
-            {/* Text */}
-            <p
-              className="mt-8
-              text-xl md:text-3xl
-              leading-relaxed
-              text-[#2B2B2B]
-              font-light max-w-4xl"
-            >
-              “{activeTestimonial?.message}”
-            </p>
-
-            {/* Bottom */}
-            <div
-              className="mt-14 flex flex-col md:flex-row
-              items-start md:items-center
-              justify-between gap-8"
-            >
-              {/* Profile */}
-              <div className="flex items-center gap-5">
-                {/* Image */}
-                <div
-                  className="p-[3px] rounded-full
-                  bg-gradient-to-r
-                  from-[#FFB36B] to-[#FF8B5A]"
-                >
-                  <img
-                    src={activeTestimonial?.user_avatar || DefaultAvatar}
-                    onError={(e) => {
-                      e.currentTarget.src = DefaultAvatar;
-                    }}
-                    alt={activeTestimonial?.user_name || "Guest"}
-                    className="w-16 h-16 rounded-full object-cover"
+              {/* Rating */}
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, index) => (
+                  <Star
+                    key={index}
+                    size={18}
+                    className="fill-[#FFB36B] text-[#FFB36B]"
                   />
-                </div>
+                ))}
+              </div>
 
-                {/* Info */}
-                <div>
-                  <h4
-                    className="text-xl font-semibold
-                    text-[#1B1B1B]"
-                  >
-                    {activeTestimonial?.user_name || "Guest"}
-                  </h4>
+              {/* Text */}
+              <p className="mt-8 text-xl md:text-3xl leading-relaxed text-[#2B2B2B] font-light max-w-4xl">
+                “{activeTestimonial?.message}”
+              </p>
 
-                  <p
-                    className="mt-1 text-sm
-                    text-gray-500 tracking-wide"
-                  >
-                    {activeTestimonial?.created_at &&
-                      new Date(activeTestimonial.created_at).toLocaleDateString(
-                        "id-ID",
-                        {
+              {/* Bottom Info */}
+              <div className="mt-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+                {/* Profile */}
+                <div className="flex items-center gap-5">
+                  <div className="p-[3px] rounded-full bg-gradient-to-r from-[#FFB36B] to-[#FF8B5A]">
+                    <img
+                      src={activeTestimonial?.user_avatar || DefaultAvatar}
+                      onError={(e) => {
+                        e.currentTarget.src = DefaultAvatar;
+                      }}
+                      alt={activeTestimonial?.user_name || "Guest"}
+                      className="w-16 h-16 rounded-full object-cover"
+                    />
+                  </div>
+
+                  <div>
+                    <h4 className="text-xl font-semibold text-[#1B1B1B]">
+                      {activeTestimonial?.user_name || "Guest"}
+                    </h4>
+                    <p className="mt-1 text-sm text-gray-500 tracking-wide">
+                      {activeTestimonial?.created_at &&
+                        new Date(
+                          activeTestimonial.created_at
+                        ).toLocaleDateString("id-ID", {
                           day: "numeric",
                           month: "long",
                           year: "numeric",
-                        },
-                      )}
-                  </p>
-                </div>
-              </div>
-
-              {/* Navigation */}
-              <div className="flex items-center gap-4">
-                {/* Prev */}
-                <button
-                  onClick={prevSlide}
-                  className="w-12 h-12 rounded-full
-                  bg-[#FAF7F4]
-                  border border-[#EFE7E1]
-                  flex items-center justify-center
-                  text-[#D08962]
-                  hover:bg-gradient-to-r
-                  hover:from-[#FF8A5B]
-                  hover:to-[#FFB36B]
-                  hover:text-white
-                  transition-all duration-300"
-                >
-                  <ArrowLeft size={20} />
-                </button>
-
-                {/* Dots */}
-                <div className="flex items-center gap-2">
-                  {testimonials.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrent(index)}
-                      className={`transition-all duration-300 rounded-full ${
-                        current === index
-                          ? "w-8 h-3 bg-gradient-to-r from-[#FF8A5B] to-[#FFB36B]"
-                          : "w-3 h-3 bg-[#E6DED8]"
-                      }`}
-                    />
-                  ))}
+                        })}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Next */}
-                <button
-                  onClick={nextSlide}
-                  className="w-12 h-12 rounded-full
-                  bg-[#FAF7F4]
-                  border border-[#EFE7E1]
-                  flex items-center justify-center
-                  text-[#D08962]
-                  hover:bg-gradient-to-r
-                  hover:from-[#FF8A5B]
-                  hover:to-[#FFB36B]
-                  hover:text-white
-                  transition-all duration-300"
-                >
-                  <ArrowRight size={20} />
-                </button>
+                {/* Navigation Controls */}
+                <div className="flex items-center gap-4">
+                  <button
+                    onClick={prevSlide}
+                    className="w-12 h-12 rounded-full bg-[#FAF7F4] border border-[#EFE7E1] flex items-center justify-center text-[#D08962] hover:bg-gradient-to-r hover:from-[#FF8A5B] hover:to-[#FFB36B] hover:text-white transition-all duration-300"
+                  >
+                    <ArrowLeft size={20} />
+                  </button>
+
+                  <div className="flex items-center gap-2">
+                    {testimonials.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrent(index)}
+                        className={`transition-all duration-300 rounded-full ${
+                          current === index
+                            ? "w-8 h-3 bg-gradient-to-r from-[#FF8A5B] to-[#FFB36B]"
+                            : "w-3 h-3 bg-[#E6DED8]"
+                        }`}
+                      />
+                    ))}
+                  </div>
+
+                  <button
+                    onClick={nextSlide}
+                    className="w-12 h-12 rounded-full bg-[#FAF7F4] border border-[#EFE7E1] flex items-center justify-center text-[#D08962] hover:bg-gradient-to-r hover:from-[#FF8A5B] hover:to-[#FFB36B] hover:text-white transition-all duration-300"
+                  >
+                    <ArrowRight size={20} />
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
-      {openModal && (
-        <div
-          className="
-    fixed inset-0 z-[999]
-    flex items-center justify-center
-    bg-black/50 px-5"
-        >
-          <div
-            className="
-      bg-white
-      rounded-3xl
-      p-8
-      w-full
-      max-w-lg"
-          >
-            <h3 className="text-2xl font-semibold">Tulis Testimoni</h3>
 
+      {/* Modal Form Input */}
+      {openModal && (
+        <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/50 px-5">
+          <div className="bg-white rounded-3xl p-8 w-full max-w-lg">
+            <h3 className="text-2xl font-semibold">Tulis Testimoni</h3>
             <p className="text-gray-500 mt-2">
               Bagikan pengalaman Anda bersama Fannia Entertainment.
             </p>
-
             <textarea
               rows={5}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Tulis testimoni..."
-              className="
-        mt-5
-        w-full
-        border
-        rounded-xl
-        p-4
-        resize-none
-        outline-none"
+              className="mt-5 w-full border rounded-xl p-4 resize-none outline-none"
             />
-
-            <div
-              className="
-        mt-6
-        flex
-        justify-end
-        gap-3"
-            >
+            <div className="mt-6 flex justify-end gap-3">
               <button
                 onClick={() => setOpenModal(false)}
-                className="
-          px-5 py-2
-          border
-          rounded-xl"
+                className="px-5 py-2 border rounded-xl"
               >
                 Batal
               </button>
-
               <button
                 onClick={submitTestimony}
                 disabled={submitting}
-                className="
-    px-5 py-2
-    rounded-xl
-    bg-gradient-to-r
-    from-[#FF8A5B]
-    to-[#FFB36B]
-    text-white
-    disabled:opacity-50
-    disabled:cursor-not-allowed"
+                className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#FF8A5B] to-[#FFB36B] text-white disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {submitting ? "Mengirim..." : "Kirim"}
               </button>
